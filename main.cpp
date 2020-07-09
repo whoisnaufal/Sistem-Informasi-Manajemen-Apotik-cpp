@@ -17,6 +17,7 @@ struct node
     node *next;
 };
 
+
 struct dataAdmin
 {
     string username[2]= {"admin1","admin2"};
@@ -32,6 +33,7 @@ void tampilData();
 void cariData();
 void hapusData();
 void menuAdmin();
+void menuKaryawan();
 void tampilLogin();
 
 void buatBaru()
@@ -208,20 +210,84 @@ void menuAdmin()
     while(pil!=6);
 }
 
+
+void menuKaryawan()
+{
+    system("CLS");
+    int pil;
+    do
+    {
+        cout<<"Selamat Datang di Sistem Informasi Manajemen Apotik\n\n";
+        cout << "1. Tambah Antrian"<<endl;
+        cout << "2. Ambil Antrian"<<endl;
+        cout << "3. Cek Ketersediaan Obat"<<endl;
+        cout << "4. Tambah Data Obat" <<endl;
+        cout << "5. Hapus Data Obat" <<endl;
+        cout << "6. Tampilkan Data Obat" <<endl;
+        cout << "7. Logout" <<endl;
+        cout << "8. Keluar" <<endl;
+        cout << "Masukkan pilihan [1..8] : ";
+        cin >> pil;
+        switch(pil)
+        {
+        case 1:
+            break;
+        case 2:
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+        }
+    }
+    while(pil!=8);
+}
+
 void tampilLogin()
 {
 loginGagal:
     system("CLS");
     string username, password;
+    int i=0;
     cout<<"Selamat Datang di Sistem Informasi Manajemen Apotik\n\n";
     cout<<"Silahkan login terlebih dahulu!\n";
     cout<<"Username : ";
     cin>>username;
     cout<<"Password : ";
     cin>>password;
+    bool ketemu=false;
+
+    temp = head;
     if(username==login.username[0]&&password==login.password[0]||username==login.username[1]&&password==login.password[1])
     {
         menuAdmin();
+    }
+    else if(head!=NULL)
+    {
+        temp->usernameKaryawan;
+        temp->passwordKaryawan;
+        while(temp!=NULL)
+        {
+            if(username==temp->usernameKaryawan && password == temp->passwordKaryawan)
+            {
+                cout<<"Login berhasil!\nTekan ENTER untuk melanjutkan";
+                ketemu = true;
+                getch();
+                menuKaryawan();
+            }
+            temp=temp->next;
+        }
+        if(ketemu==false)
+        {
+            cout<<"\nMaaf username atau password yang kamu masukkan salah!\nTekan ENTER untuk coba lagi\n";
+            getch();
+            goto loginGagal;
+        }
     }
     else
     {
